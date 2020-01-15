@@ -1,0 +1,46 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.beers-container {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.beers-container .beer-container {
+  border: 1px solid gainsboro;
+  padding: 20px;
+  margin: 10px 0;
+}
+
+.beers-container img {
+  margin: 0 auto;
+  max-width: 25rem;
+  width: 100%;
+  display: block;
+}
+
+.filters-container {
+  padding: 0 15px;
+  font-size: 1.6rem;
+}
+
+.beer-heading {
+  font-size: 1.6rem;
+}
+
+.beer-descr {
+  font-size: 1.4rem;
+}
+
+.alc-perc {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+/*# sourceMappingURL=style.css.map */

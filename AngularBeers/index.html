@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="/js/mainController.js"></script>
+    
+</head>
+<body ng-app="BeersApp" ng-controller="ListController">
+    <header>
+        <div>
+            <h1>Beers AngularJS</h1>
+        </div>
+    </header>
+    <main class="container">
+        <div class="row filters-container">
+            <div class="rangeSlider-container col-4">
+                <div>Alcohol slider:</div>
+                <div>
+                    <input type="range" name="range" ng-model="filterByRange" step="1" min="{{min}}" max="{{max}}"  value="0" class="slider" id="myRange">
+                </div>
+                <div>
+                    <input type="text"  ng-model="filterByRange" value="0">
+                </div>
+            </div>
+            <div class="searchBeer-container col-4">
+                <div>Search by name:</div>
+                <input type="text" name="search" id="search" ng-model="search">
+            </div>
+            <div class="col-4">
+                <div>Order by:</div>
+                <select ng-model="orderBy">
+                    <option value="name">Name</option>
+                    <option value="alcohol">Alcohol</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <ul class="beers-container row">
+                <li ng-repeat="beer in beers | filter: search | orderBy: orderBy" ng-hide="filterByRange > beer.alcohol" class="col-12 col-sm-6 col-lg-4">
+                    <div class="beer-container">
+                        <img ng-src="/data/beers/{{ beer.id }}.jpg">
+                        <h2 class="beer-heading" ng-click="changeThisText()">{{ beer.name }}</h2>
+                        <p class="beer-descr">{{ beer.description }}</p>
+                        <span class="alc-perc">{{ beer.alcohol }}% alcohol</span>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </main>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

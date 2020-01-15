@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #animate {
+            background-color: #A1F;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="animate">Click me</div>
+
+    <script>
+        (function () {
+            let element = document.getElementById('animate');
+
+            function animate(el, distance, speed) {
+                let positionNow = 0;
+
+                function move() {
+
+                    if (positionNow > distance) {
+                        return;
+                    }
+
+                    positionNow += speed; 
+                    el.style.transform = 'translateX(' + positionNow + 'px)';
+                                        
+                    requestAnimationFrame(move);
+                }
+
+                move();
+            }
+
+            element.onclick = () => animate(element, 300, 10);
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function cacheFunction(fn) {
+            var cache = {};
+            console.log(cache);
+
+            return function () {
+                var args = arguments;
+                var key = JSON.stringify(args);
+
+                if (cache[key]) {
+                    return cache[key];
+                } else {
+                    cache[key] = fn.apply(null, args);
+                    return cache[key];
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
